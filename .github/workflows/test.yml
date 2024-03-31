@@ -1,0 +1,12 @@
+name: Workflow F
+#nombre que buscara las acciones de Github
+#asegura que se pueda activar manualmente el flujo de trabajo
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: windows-latest
+    steps:
+      - name: Print greeting
+        run: echo "Hello"
+      - name: Print goodbye
+        run: echo "Goodbye"
