@@ -1,12 +1,21 @@
-name: Workflow F
+name: Test Project
 #nombre que buscara las acciones de Github
-#asegura que se pueda activar manualmente el flujo de trabajo
-on: workflow_dispatch
+#trigger/events
+#push
+on: push
 jobs:
   first-job:
     runs-on: windows-latest
     steps:
-      - name: Print greeting
-        run: echo "Hello"
-      - name: Print goodbye
-        run: echo "Goodbye"
+      - name: Get code #descarga el codigo del repositorio en el ejecutor/servidor (windows)
+        uses: actions/checkout@v3  #palabra clave para usar acciones, se dirige al repositorio que contiene el codigo de esa accion
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+            node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Run test
+        run: npm test
+      
+        
